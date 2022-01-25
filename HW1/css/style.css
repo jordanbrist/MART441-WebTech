@@ -13,17 +13,58 @@ body {
     background : rgb(255, 255, 255, 0);    
 }
 
+
+
 #main {
     font-family: 'Arial', sans-serif;
     color: rgb(255, 255, 255);
     font-weight: normal;
     letter-spacing: 10px;
-    font-size: 40px;
+    font-size: 20px;
     padding-top: 0px;
     padding-left: 20px;
     text-align: left;
 }
 
+@media only screen and (min-width: 800px){
+    #main {
+        font-family: 'Arial', sans-serif;
+        color: rgb(255, 255, 255);
+        font-weight: normal;
+        letter-spacing: 10px;
+        font-size: 30px;
+        padding-top: 0px;
+        padding-left: 20px;
+        text-align: left;
+    }
+}
+
+@media only screen and (min-width: 1000px){
+    #main {
+        font-family: 'Arial', sans-serif;
+        color: rgb(255, 255, 255);
+        font-weight: normal;
+        letter-spacing: 10px;
+        font-size: 40px;
+        padding-top: 0px;
+        padding-left: 20px;
+        text-align: left;
+    }
+}
+
+#info {
+    font-family: 'Arial', sans-serif;
+    color: rgb(255, 255, 255);
+    background: rgb(0, 0, 0, 0.5);
+    font-weight: normal;
+    letter-spacing: 5px;
+    font-size: 20px;
+    text-align: center;
+    padding: 10%;
+    margin-top: 600px;
+}
+
+@media only screen and (min-width: 800px){
 #info {
     font-family: 'Arial', sans-serif;
     color: rgb(255, 255, 255);
@@ -35,7 +76,23 @@ body {
     padding: 10%;
     margin-top: 600px;
 }
+}
 
+#addition1 {
+    font-family: 'Arial', sans-serif;
+    color: rgb(0, 0, 0);
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 75px;
+    font-weight: normal;
+    letter-spacing: 5px;
+    font-size: 20px;
+    text-align: center;
+    float: center;
+    padding: 5%;
+    margin-top: 400px;
+}
+
+@media only screen and (min-width: 800px){
 #addition1 {
     font-family: 'Arial', sans-serif;
     color: rgb(0, 0, 0);
@@ -48,10 +105,42 @@ body {
     float: left;
     padding: 2%;
     margin-top: 400px;
-    margin-right: 500px;
-
+    
+}
 }
 
+@media only screen and (min-width: 1000px){
+    #addition1 {
+        font-family: 'Arial', sans-serif;
+        color: rgb(0, 0, 0);
+        background: rgba(255, 255, 255, 0.7);
+        border-radius: 75px;
+        font-weight: normal;
+        letter-spacing: 5px;
+        font-size: 30px;
+        text-align: left;
+        float: left;
+        padding: 2%;
+        margin-top: 400px;
+        margin-right: 500px;
+    }
+    }
+
+#addition2 {
+    font-family: 'Arial', sans-serif;
+    color: rgb(255, 255, 255);
+    background: rgb(0, 0, 0, 0.7);
+    border-radius: 75px;
+    font-weight: normal;
+    letter-spacing: 5px;
+    font-size: 20px;
+    text-align: center;
+    float: center;
+    padding: 2%;
+    margin-top: 80px;
+}
+
+@media only screen and (min-width: 800px){
 #addition2 {
     font-family: 'Arial', sans-serif;
     color: rgb(255, 255, 255);
@@ -64,10 +153,42 @@ body {
     float: right;
     padding: 2%;
     margin-top: 100px;
-    margin-left: 500px;
-
+    
+}
 }
 
+@media only screen and (min-width: 1000px){
+    #addition2 {
+        font-family: 'Arial', sans-serif;
+        color: rgb(255, 255, 255);
+        background: rgb(0, 0, 0, 0.7);
+        border-radius: 75px;
+        font-weight: normal;
+        letter-spacing: 5px;
+        font-size: 30px;
+        text-align: right;
+        float: right;
+        padding: 2%;
+        margin-top: 100px;
+        margin-left: 500px;
+    }
+    }
+
+#addition3 {
+    font-family: 'Arial', sans-serif;
+    color: rgb(0, 0, 0);
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 75px;
+    font-weight: normal;
+    letter-spacing: 4px;
+    font-size: 20px;
+    text-align: center;
+    float: center;
+    padding: 5%;
+    margin-top: 80px;
+}
+
+@media only screen and (min-width: 800px){
 #addition3 {
     font-family: 'Arial', sans-serif;
     color: rgb(0, 0, 0);
@@ -80,5 +201,22 @@ body {
     float: left;
     padding: 2%;
     margin-top: 100px;
-    margin-right: 500px;
 }
+}
+
+@media only screen and (min-width: 1000px){
+    #addition3 {
+        font-family: 'Arial', sans-serif;
+        color: rgb(0, 0, 0);
+        background: rgba(255, 255, 255, 0.7);
+        border-radius: 75px;
+        font-weight: normal;
+        letter-spacing: 4px;
+        font-size: 30px;
+        text-align: left;
+        float: left;
+        padding: 2%;
+        margin-top: 100px;
+        margin-right: 500px;
+    }
+    }
