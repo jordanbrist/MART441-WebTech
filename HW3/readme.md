@@ -1,0 +1,4 @@
+# Homework 3
+## Jordan Brist
+
+This week was definitely more challenging than the last, but as I worked on the assignment, things started going more smoothly and it felt like I was getting back in to the rythm of working with JS. One challenge I had was figuring out where to use some addition in the code. I decided to create a variable that tracks points given by each decision. Since some decisions are worth more than others I was able to incorporate a Win-Lose scenario into the adventure. As of writing, I have some open ends that I plan on building upon, but I didn't want them to just be uncklickable. Thus, I had to add some dead ends as placeholders. I also wanted to use more images but figured we would continue working on this in week 4, so I'll probably make my own drawings or edit some images for the specific scenarios. 
