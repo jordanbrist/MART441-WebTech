@@ -72,11 +72,38 @@ function progression(option) {
             console.log(points);
         }
 
+        else if (option == 1 && pick1 == "How much Blood?") {
+            document.getElementById("main").innerHTML = "A lot...";
+            document.getElementById("option1").innerHTML = "Look at the tracks";
+            document.getElementById("option2").innerHTML = "Go West";
+            document.getElementById("option3").innerHTML = "RUN";
+            points = points + 1; 
+            console.log(points);
+        }
+
+        else if (option == 1 && pick1 == "Look at the tracks") {
+            document.getElementById("main").innerHTML = "The tracks lead North";
+            document.getElementById("option1").innerHTML = "Follow the tracks";
+            document.getElementById("option2").innerHTML = "Go West";
+            document.getElementById("option3").innerHTML = "What do they look like?";
+            points = points + 1; 
+            console.log(points);
+        }
+
+        else if (option == 1 && pick1 == "look at the tracks") {
+            document.getElementById("main").innerHTML = "The tracks lead North";
+            document.getElementById("option1").innerHTML = "Follow the tracks";
+            document.getElementById("option2").innerHTML = "Go West";
+            document.getElementById("option3").innerHTML = "What do they look like?";
+            points = points + 1; 
+            console.log(points);
+        }
+
         else if (option == 2 && pick2 == "No, keep moving North") {
             document.getElementById("main").innerHTML = "Aha! You see the exit! Wait, is that a bugbear up ahead?";
-            document.getElementById("option1").innerHTML = "RUN";
+            document.getElementById("option1").innerHTML = "FIGHT";
             document.getElementById("option2").innerHTML = "Go West";
-            document.getElementById("option3").innerHTML = "FIGHT"; 
+            document.getElementById("option3").innerHTML = "RUN"; 
             points = points + 0;
             console.log(points);
         }
@@ -120,7 +147,7 @@ function progression(option) {
         }
 
             else if (option == 3 && pick3 == "Eat the whole thing") {
-                document.getElementById("main").innerHTML = "Tastes like Bread";
+                document.getElementById("main").innerHTML = "Really? The whole loaf? Ok, then.";
                 document.getElementById("option1").innerHTML = "Keep moving";
                 document.getElementById("option2").innerHTML = "Keep moving";
                 document.getElementById("option3").innerHTML = "Keep moving";
@@ -132,9 +159,9 @@ function progression(option) {
 
         else if (option == 2 && pick2 == "Walk around it") {
             document.getElementById("main").innerHTML = "Aha! You see the exit! Wait, is that a bugbear up ahead?";
-            document.getElementById("option1").innerHTML = "RUN";
+            document.getElementById("option1").innerHTML = "FIGHT";
             document.getElementById("option2").innerHTML = "Head North";
-            document.getElementById("option3").innerHTML = "FIGHT"; 
+            document.getElementById("option3").innerHTML = "RUN"; 
             points = points + 0;
             console.log(points);
         }
@@ -148,8 +175,8 @@ function progression(option) {
             console.log(points);
         }
 
-        else if (option == 3 && pick3 == "FIGHT" && points >=3 ) {
-            document.getElementById("main").innerHTML = "Wow! That thing was scared off surprisingly easily.";
+        else if (option == 1 && pick1 == "FIGHT" && points >=3 ) {
+            document.getElementById("main").innerHTML = "Wow! That thing was scared off surprisingly easily. Maybe too easily... Oh well.";
             document.getElementById("option1").innerHTML = "EXIT";
             document.getElementById("option2").innerHTML = "Go West";
             document.getElementById("option3").innerHTML = "Go Back"; 
@@ -157,8 +184,8 @@ function progression(option) {
             console.log(points);
         }
 
-        else if (option == 3 && pick3 == "FIGHT" && points <3 ) {
-            document.getElementById("main").innerHTML = "You died.";
+        else if (option == 1 && pick1 == "FIGHT" && points <3 ) {
+            document.getElementById("main").innerHTML = "The bugbear was was not impressed. You died.";
             document.getElementById("option1").innerHTML = "Try Again";
             document.getElementById("option2").innerHTML = "Try Again";
             document.getElementById("option3").innerHTML = "Try Again"; 
@@ -166,7 +193,7 @@ function progression(option) {
             console.log(points);
         }
     
-        else if (option == 1 && pick3 == "RUN" && points >=3 ) {
+        else if (option == 3 && pick3 == "RUN" && points >=5 ) {
             document.getElementById("main").innerHTML = "Good thinking, You got away. Although, I think you might be lost again.";
             document.getElementById("option1").innerHTML = "Go South";
             document.getElementById("option2").innerHTML = "Go East";
@@ -175,7 +202,7 @@ function progression(option) {
             console.log(points);
         }
 
-        else if (option == 1 && pick3 == "RUN" && points <3 ) {
+        else if (option == 3 && pick3 == "RUN" && points <5 ) {
             document.getElementById("main").innerHTML = "You tripped on a root as you tried to flee. You died.";
             document.getElementById("option1").innerHTML = "Try Again";
             document.getElementById("option2").innerHTML = "Try Again";
