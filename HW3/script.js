@@ -1,4 +1,5 @@
 var points = 0
+var bread = 0
 
 console.log(points);
 
@@ -98,6 +99,37 @@ function progression(option) {
             console.log(points);
         }
 
+        else if (option == 1 && pick1 == "Pick it up") {
+            document.getElementById("main").innerHTML = "Yep, it's just bread.";
+            document.getElementById("option1").innerHTML = "Keep moving";
+            document.getElementById("option2").innerHTML = "Keep Moving";
+            document.getElementById("option3").innerHTML = "Taste it";
+            points = points + 1;
+            bread = bread + 1;
+            console.log(points);
+        }
+
+        else if (option == 3 && pick3 == "Taste it") {
+            document.getElementById("main").innerHTML = "Tastes like Bread";
+            document.getElementById("option1").innerHTML = "Keep moving";
+            document.getElementById("option2").innerHTML = "Keep moving";
+            document.getElementById("option3").innerHTML = "Eat the whole thing";
+            points = points + 1;
+            bread = bread + 1;
+            console.log(points);
+        }
+
+            else if (option == 3 && pick3 == "Eat the whole thing") {
+                document.getElementById("main").innerHTML = "Tastes like Bread";
+                document.getElementById("option1").innerHTML = "Keep moving";
+                document.getElementById("option2").innerHTML = "Keep moving";
+                document.getElementById("option3").innerHTML = "Keep moving";
+                points = points + 1;
+                bread = bread - 1;
+                console.log(points);
+            }
+
+
         else if (option == 2 && pick2 == "Walk around it") {
             document.getElementById("main").innerHTML = "Aha! You see the exit! Wait, is that a bugbear up ahead?";
             document.getElementById("option1").innerHTML = "RUN";
@@ -134,6 +166,23 @@ function progression(option) {
             console.log(points);
         }
     
+        else if (option == 1 && pick3 == "RUN" && points >=3 ) {
+            document.getElementById("main").innerHTML = "Good thinking, You got away. Although, I think you might be lost again.";
+            document.getElementById("option1").innerHTML = "Go South";
+            document.getElementById("option2").innerHTML = "Go East";
+            document.getElementById("option3").innerHTML = "Go Back"; 
+            points = points + 1;
+            console.log(points);
+        }
+
+        else if (option == 1 && pick3 == "RUN" && points <3 ) {
+            document.getElementById("main").innerHTML = "You tripped on a root as you tried to flee. You died.";
+            document.getElementById("option1").innerHTML = "Try Again";
+            document.getElementById("option2").innerHTML = "Try Again";
+            document.getElementById("option3").innerHTML = "Try Again"; 
+            points = points + 0;
+            console.log(points);
+        }
 
 
 
