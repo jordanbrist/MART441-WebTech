@@ -147,7 +147,7 @@ function progression(option) {
         }
 
             else if (option == 3 && pick3 == "Eat the whole thing") {
-                document.getElementById("main").innerHTML = "Really? The whole loaf? Ok, then.";
+                document.getElementById("main").innerHTML = "Really? The whole loaf?";
                 document.getElementById("option1").innerHTML = "Keep moving";
                 document.getElementById("option2").innerHTML = "Keep moving";
                 document.getElementById("option3").innerHTML = "Keep moving";
