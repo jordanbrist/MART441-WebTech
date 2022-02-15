@@ -1,57 +1,84 @@
 <!DOCTYPE html>
 <html>
 
-    <head>
+<head>
 
-        <meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-        <meta name="description" content="Homework 4">
+    <meta name="description" content="Homework 4">
 
-        <meta name="author" content="Jordan Brist">
+    <meta name="author" content="Jordan Brist">
 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>Choose Your Own Adventure - Text Input</title>
+    <title>Choose Your Own Adventure - Text Input</title>
 
-        <link rel="stylesheet" type="text/css" href="./style.css">
+    <link rel="stylesheet" type="text/css" href="./style.css">
 
-        <script src="../HW4/script.js"></script>
+    <script src="../HW4/script.js"></script>
 
-    </head>
+</head>
 
-    <body>
+<body>
 
-        <h2>Two Doors</h2>
+    <h2>Two Doors</h2>
 
-        <img src="../HW4/images/mainImage.png" id="mainImage" width="500">
+    <img src="../HW4/images/mainImage.png" id="mainImage" width="500">
 
     <div id="question">
         <br>
         <br>
-        Standing before you are two doors. They are nearly identical. However, one is a mirror image of the other. Which would you like to open?
+        Standing before you are two doors. They are nearly identical. However, one is a mirror image of the other. Which
+        would you like to open?
         <br>
         <br>
         Left or Right?
     </div>
-       
-        <input type="text" size="20" id="choice" value="Left or Right" style="display:inline">
-        <button id="btnSubmit" onclick="getChoice1();">Submit and Continue</button>
 
-        <input type="text" size="20" id="choice2" value="Left or Right" style="display:none">
-        <button id="btnSubmit2" onclick="getChoice2();"  style="display:none">Submit and Continue</button>
+    <input type="text" size="20" id="choice" value="Left or Right" style="display:inline">
+    <button id="btnSubmit" onclick="getChoice1();">Submit and Continue</button>
 
-        <input type="text" size="20" id="choice3" value="Left or Right"  style="display:none">
-        <button id="btnSubmit3" onclick="getChoice3();" style="display:none">Submit and continue</button>
+    <input type="text" size="20" id="choice2" value="Left or Right" style="display:none">
+    <button id="btnSubmit2" onclick="getChoice2();" style="display:none">Submit and Continue</button>
 
-        <input type="text" size="20" id="choice3" value="Left or Right"  style="display:none">
-        <button id="btnSubmit4" onclick="getChoice4();" style="display:none">Submit and continue</button>
+    <input type="text" size="20" id="choice3" value="Left or Right" style="display:none">
+    <button id="btnSubmit3" onclick="getChoice3();" style="display:none">Submit and continue</button>
 
-        <input type="text" size="20" id="choice3" value="Left or Right"  style="display:none">
-        <button id="btnSubmit5" onclick="getChoice5();" style="display:none">Submit and continue</button>
+    <input type="text" size="20" id="choice4" value="Left or Right" style="display:none">
+    <button id="btnSubmit4" onclick="getChoice4();" style="display:none">Submit and Continue</button>
 
-    </body>
+    <input type="text" size="20" id="choice5" value="Left or Right" style="display:none">
+    <button id="btnSubmit5" onclick="getChoice5();" style="display:none">Submit and Continue</button>
 
-    
-    
+    <input type="text" size="20" id="choice6" value="Forward or Down" style="display:none">
+    <button id="btnSubmit6" onclick="getChoice6();" style="display:none">Submit and Continue</button>
+
+    <input type="text" size="20" id="choice7" value="Door or Bag" style="display:none">
+    <button id="btnSubmit7" onclick="getChoice7();" style="display:none">Submit and Continue</button>
+
+    <input type="text" size="20" id="choice8" value="Cart or Elevator" style="display:none">
+    <button id="btnSubmit8" onclick="getChoice8();" style="display:none">Submit and Continue</button>
+
+    <input type="text" size="20" id="choice9" value="Door or Bag" style="display:none">
+    <button id="btnSubmit9" onclick="getChoice9();" style="display:none">Submit and Continue</button>
+
+    <input type="text" size="20" id="choice10" value="Straight or Right" style="display:none">
+    <button id="btnSubmit10" onclick="getChoice10();" style="display:none">Submit and Continue</button>
+
+    <input type="text" size="20" id="choice11" value="Space or Home" style="display:none">
+    <button id="btnSubmit10" onclick="getChoice10();" style="display:none">Submit and Continue</button>
+
+    <input type="text" size="20" id="choice13" value="Space or Home" style="display:none">
+    <button id="btnSubmit13" onclick="getChoice13();" style="display:none">Submit and Continue</button>
+
+    <button id="btnTryAgain" onclick="window.location.reload();" style="display:none">Try Again!</button>
+
+    <button id="restart" onclick="doWhileRestart();" style="display: inline">RESTART</button>
+
+
+</body>
+
+
+
 
 </html>
