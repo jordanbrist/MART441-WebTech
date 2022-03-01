@@ -58,7 +58,7 @@ function flip(number) {
         if (pairs == images.length / 2) {
             player.attempts = attempts;
             localStorage.setItem("playerInfo", JSON.stringify(player));
-            window.location = "pageEnd.html";
+            window.location = "score.html";
         }
     }
 }
@@ -86,7 +86,7 @@ function addInfo() {
     player.age = age;
 
     localStorage.setItem("playerInfo", JSON.stringify(player));
-    window.location = "pageMain.html";
+    window.location = "game.html";
 }
 
 
