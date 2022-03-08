@@ -3,7 +3,7 @@ var viewMasterArray = new Array();
 // this is the main ViewMaster class
 
 class ViewMaster {
-    
+
     constructor(title, img, desc, artist, date) {
         this.title = title;
         this.img = img;
@@ -18,27 +18,23 @@ class ViewMaster {
     toString1() {
         return this.img;
     }
-    
 
     toString2() {
         return "<br>" + this.title;
     }
-    
 
     toString3() {
         return "<br>" + this.artist;
     }
-    
 
     toString4() {
         return this.desc;
     }
-    
 
     toString5() {
         return this.date;
     }
-    
+
 }
 
 
@@ -54,7 +50,7 @@ function createAndAddToArray() {
 
     viewMasterArray.push(ViewMaster2);
 
-    let ViewMaster3 = new ViewMaster("Warning", "./images/image3.jpg", "Muslim women, living in areas where the Serbo-Croation War decimated their lives, were made to stand by as their homes and livelihoods were destroyed. If they tried to run, or dared to fight back, they could be raped, tortured, or shot, or if “unlucky”, they would suffer all three.", " Jane Caminos", "2012" );
+    let ViewMaster3 = new ViewMaster("Warning", "./images/image3.jpg", "Muslim women, living in areas where the Serbo-Croation War decimated their lives, were made to stand by as their homes and livelihoods were destroyed. If they tried to run, or dared to fight back, they could be raped, tortured, or shot, or if “unlucky”, they would suffer all three.", " Jane Caminos", "2012");
 
     viewMasterArray.push(ViewMaster3);
 
