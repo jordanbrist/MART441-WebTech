@@ -18,37 +18,27 @@ class ViewMaster {
     toString1() {
         return this.img;
     }
-    get theImg() {
-        return this.img;
-    }
+    
 
     toString2() {
         return "<br>" + this.title;
     }
-    get theTitle() {
-        return "<br>" + this.title;
-    }
+    
 
     toString3() {
         return "<br>" + this.artist;
     }
-    get theArtist() {
-        return "<br>" + this.artist;
-    }
+    
 
     toString4() {
         return this.desc;
     }
-    get theDesc() {
-        return this.desc;
-    }
+    
 
     toString5() {
         return this.date;
     }
-    get theDate() {
-        return this.date;
-    }
+    
 }
 
 
