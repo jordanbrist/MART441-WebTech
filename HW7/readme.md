@@ -1,4 +1,4 @@
-# Homework 6
+# Homework 7
 ## Jordan Brist
 
-This week was challenging for me due to the sheer amount of variables and different things to keep track of. If one thing is named improperly or mistyped then the whole thing goes awry which is extremely frustrating. 
+This week looked like it was going to be fairly easy but I struggled with it more than I thought I would. I tried making a toString with multiple objects inside similar to the one used in the example from "An Example using Classes and Objects" on the website. However, I couldn't figure out how to get things to display properly so I opted to split it up.
