@@ -1,0 +1,4 @@
+# Homework 9
+## Jordan Brist
+
+This assignment, though simple, was extremely difficult for me. I could not get my JSON data to display properly, it would come up as "undefined" or blank. Normally, I would be able to troubleshoot and kind of just throw everything at it until it works. However, because I run my code locally using my browser, I was unable to see anything at all due to an error that would block any attempt to access my JSON file. Thus, all of my trial and error had to go through the long process of viewing it via the github site. I don't know how to work around this. I read some stuff about XMLHttpRequest, but I didn't have the time to figure out how to implement it into my code. This inability to view my finished product and change my code on the fly made the whole process take exponentially longer than it needed to. This made it difficult to allow time to work on the CSS and present the data in a way that I find to be visually pleasing. 
