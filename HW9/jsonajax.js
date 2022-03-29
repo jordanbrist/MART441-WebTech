@@ -6,7 +6,6 @@ $(document).ready(function () {
                 row = $('<tr/>');
                 row.append("<td>" + index.name + "</td>");
                 row.append("<td>" + index.num + "</td>");
-                row.append("<td>" + index.type[0] + "</td>");
                 row.append("<td>" + index.height + "</td>");
                 row.append("<td>" + index.weight + "</td>");
                 $('table').append(row);
