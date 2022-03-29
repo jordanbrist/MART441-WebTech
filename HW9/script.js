@@ -21,5 +21,5 @@ $(function () {
 
 function showPokeInfo()
     {
-        $("#pokeInfo").html("Number:" + pokemon.num + "Name:" + pokemon.name + "Type:" + pokemon.type[0] + pokemon.type[1] + "Height:" + pokemon.height + "Weight:" + pokemon.weight);
+        $("#pokeInfo").html("Number:" + pokemon.num + "<br>Name:" + pokemon.name + "<br>Type:" + pokemon.type[0] + "+" + pokemon.type[1] + "<br>Height:" + pokemon.height + "<br>Weight:" + pokemon.weight);
     }
