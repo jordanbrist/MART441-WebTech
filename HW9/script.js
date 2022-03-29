@@ -1,9 +1,9 @@
+
 let pokemon = {
 
         "id": "1",
         "num": "001",
         "name": "Bulbasaur",
-        "img": "http://www.serebii.net/pokemongo/pokemon/001.png",
         "type": [
           "Grass",
           "Poison"

@@ -1,16 +1,12 @@
+
 $(document).ready(function () {
     $("button").click(function () {
-        $.getJSON("./pokedex.json", function (data) {
-            var row;
-            $.each(data, function (i, index) {
-                row = $('<tr/>');
-                row.append("<td>" + index.name + "</td>");
-                row.append("<td>" + index.num + "</td>");
-                row.append("<td>" + index.type[0, 1] + "</td>");
-                row.append("<td>" + index.height + "</td>");
-                row.append("<td>" + index.weight + "</td>");
-                $('table').append(row);
-            });
+        $("#pokeInfo").load("pokedex.json", function(responseText){
+            var pokemon = JSON.parse(responseText);
+            $("#pokeInfo").html("Name: " + pokemon.name 
+        + "<br>Number:" + pokemon.num + "<br>Height:" + pokemon.height + "<br>Weight:" 
+        + pokemon.weight + "<br>Type:" +
+        pokemon.type[0] + "<br>" + pokemon.type[1]);
         });
     });
 });
