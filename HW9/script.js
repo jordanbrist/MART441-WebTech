@@ -1,10 +1,25 @@
-$(document).ready(function () {
+let pokemon = {
+
+        "id": "1",
+        "num": "001",
+        "name": "Bulbasaur",
+        "img": "http://www.serebii.net/pokemongo/pokemon/001.png",
+        "type": [
+          "Grass",
+          "Poison"
+        ],
+        "height": "0.71 m",
+        "weight": "6.9 kg",
+}
+
+
+$(function () {
     $("button").click(function () {
-        $("#pokeInfo").load("pokedex.txt", function(responseText){
-            var pokemon = JSON.parse(responseText);
-            $("#pokeInfo").html("Number: " + pokemon.num 
-        + "<br>Name:" + pokemon.name + "<br>Type:" + pokemon.type + "<br>Height:" 
-        + pokemon.height + "<br>Weight:" + pokemon.weight);
-        });
+        showPokeInfo();
     });
 });
+
+function showPokeInfo()
+    {
+        $("#pokeInfo").html("Number:" + pokemon.num + "Name:" + pokemon.name + "Type:" + pokemon.type[0] + pokemon.type[1] + "Height:" + pokemon.height + "Weight:" + pokemon.weight);
+    }
