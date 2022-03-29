@@ -1,9 +1,11 @@
-var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
-              //readyState == 4 means the request is finished and response is ready
-              //status == 200 "OK"
-              //When readyState is 4 and status is 200, the response is ready:
-                if (this.readyState == 4 && this.status == 200) {
+$("button").click(function(){
+    $.getJSON("pokedex.json", function(result){
+      $.each(result, function(i, field){
+        $("div").append(field + " ");
+      });
+    });
+  });
+
 $(document).ready(function () {
     $("button").click(function () {
         $("#pokeInfo").load("pokedex.json", function (responseText) {
@@ -14,7 +16,3 @@ $(document).ready(function () {
         });
     });
 });
-
-xhttp.open("GET", "pokedex.json", true); 
-            xhttp.send();
-        }}
