@@ -5,9 +5,10 @@ $(document).ready(function () {
             $.each(data, function (i, index) {
                 row = $('<tr/>');
                 row.append("<td>" + index.name + "</td>");
-                row.append("<td>" + index.id + "</td>");
-                row.append("<td>" + index.recclass + "</td>");
-                row.append("<td>" + index.mass + "</td>");
+                row.append("<td>" + index.num + "</td>");
+                row.append("<td>" + index.type[0, 1] + "</td>");
+                row.append("<td>" + index.height + "</td>");
+                row.append("<td>" + index.weight + "</td>");
                 $('table').append(row);
             });
         });
