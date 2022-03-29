@@ -1,6 +1,6 @@
 
 $(document).ready(function() {
-    $("button").click(function(event) {
+    $("button").click(function() {
         $.getJSON('pokedex.json', function(pokemon) {
             $('#pokeInfo').html('<p> Name: ' + pokemon.name + '</p>');
             $('#pokeInfo').append('<p> Number : ' + pokemon.num + '</p>');
@@ -9,4 +9,3 @@ $(document).ready(function() {
         });
     });
 });
-
