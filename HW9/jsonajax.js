@@ -15,11 +15,3 @@ $(document).ready(function () {
 });
 
 
-(function ($) {
-    $.fn.green = function () {
-        this.css("background-color", "green");
-        this.css("color", "white");
-        this.css("font-size", 40);
-        return this;
-    };
-}(jQuery));
