@@ -2,23 +2,18 @@ var canvas;
 var ctx;
 var x = 50;
 var y = 50;
-var square1, square2;
+var square1;
+var square2;
 var collectibles1;
 var squareArray = [];
 var collectiblesArray = [];
+var direction;
 var lives = 3;
 var score = 0;
 
 $(document).ready(function(){
     setup();  
-
-    $(this).keypress(function(event){
-        getKey(event);
-        
-    });
 });
-
-createSquares();
 
 
 function setup()
@@ -26,7 +21,7 @@ function setup()
     canvas = document.getElementById("myCanvas");
     ctx = canvas.getContext("2d");
 
-    square1 = new Square(x, y, 10, 10, "blue");
+    square1 = new Square(x, y, 20, 20, "blue");
     square2 = new Square(400, 400, 100, 100, "red");
     $.getJSON("DATA/squares.json", function(data) {
         for(var i = 0; i < data.squares.length; i++)
@@ -34,13 +29,18 @@ function setup()
             squareArray.push(new Square(data.squares[i].x,data.squares[i].y, data.squares[i].h, data.squares[i].w, data.squares[i].color));
         }
         drawSquare();
+
+        $(this).keypress(function(event){
+            getKey(event);
+            
+        });
     });
 
 
 function drawSquare() {
     ctx.clearRect(0, 0, 800, 600);
-    ctx.fillStyle = "blue";
-    ctx.fillRect(square1.x, square1.y, square1.w, square1.h);
+    ctx.fillStyle = square1.color;
+    ctx.fillRect(x, y, 20, 20);
     ctx.fillStyle = square2.color;
     ctx.fillRect(square2.x, square2.y, square2.w, square2.h);
     for(var i = 0; i < squareArray.length; i++)
@@ -48,7 +48,6 @@ function drawSquare() {
         ctx.fillStyle = squareArray[i].color;
         ctx.fillRect(squareArray[i].x, squareArray[i].y, squareArray[i].width, squareArray[i].height);
     }
-
     ctx.font = "20px Arial";
     ctx.fillText("Lives: " + lives, 10, 50);   
 
@@ -70,64 +69,9 @@ function getKey(event) {
         moveLeft();
     }
 
-    drawSquare();
-
-    var test = hasCollided(square1,square2);
-    var test2 = false;
-    for(var i = 0; i < squareArray.length; i++)
-    {
-
-        test2 = hasCollided(square1,squareArray[i]);
-        if(test2 == true)
-        {
-            break;
-        }
-        
-        //console.log(test2);
-    }
-    if(test || test2)
-    {
-        lives--;
-        if(direction == "left")
-        {
-            moveRight();
-        }
-        else if(direction == "right")
-        {
-            moveLeft();
-        }
-        else if(direction == "up")
-        {
-            moveDown();
-        }
-        else if(direction == "down")
-        {
-            moveUp();
-        }
-    
-    }
 
     drawSquare(); 
     
-}
-
-    var hitBoundary = boundaryCollide1(square1);
-    if (hitBoundary) {
-        canvas.style.backgroundColor = "rgb(" + Math.floor(Math.random() * 255) + "," + Math.floor(Math.random() * 255) + "," + Math.floor(Math.random() * 255) + ")";
-        square1.setX(square1.theX + 20);
-        square1.setY(square1.theY + 20);
-
-    }
-
-    var hitBoundary2 = boundaryCollide2(square1);
-    if (hitBoundary2) {
-        canvas.style.backgroundColor = "rgb(" + Math.floor(Math.random() * 255) + "," + Math.floor(Math.random() * 255) + "," + Math.floor(Math.random() * 255) + ")";
-        square1.setX(square1.theX - 20);
-        square1.setY(square1.theY - 20);
-
-    }
-
-    drawSquare();
 }
 
 
@@ -145,6 +89,25 @@ function moveLeft() {
 
 function moveRight() {
     square1.setX(square1.theX + 10);
+}
+
+var hitBoundary = boundaryCollide1(square1);
+if (hitBoundary) {
+    canvas.style.backgroundColor = "rgb(" + Math.floor(Math.random() * 255) + "," + Math.floor(Math.random() * 255) + "," + Math.floor(Math.random() * 255) + ")";
+    square1.setX(square1.theX + 20);
+    square1.setY(square1.theY + 20);
+
+}
+
+var hitBoundary2 = boundaryCollide2(square1);
+if (hitBoundary2) {
+    canvas.style.backgroundColor = "rgb(" + Math.floor(Math.random() * 255) + "," + Math.floor(Math.random() * 255) + "," + Math.floor(Math.random() * 255) + ")";
+    square1.setX(square1.theX - 20);
+    square1.setY(square1.theY - 20);
+
+}
+
+drawSquare();
 }
 
 function hasCollided(object1, object2) {
