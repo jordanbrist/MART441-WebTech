@@ -1,4 +1,4 @@
-class Squares{
+class Square{
     constructor(x, y, height, width, color)
     {
         this.x = x;
