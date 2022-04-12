@@ -1,111 +1,62 @@
-var canvas = document.getElementById("myCanvas");
-var ctx = canvas.getContext("2d");
+var canvas;
+var ctx;
 var x = 50;
 var y = 50;
-var mySquare;
-var squares;
-var square1, square2, square3, square4;
-var collectibles1, collectibles2, collectible3;
+var square1, square2;
+var collectibles1;
 var squareArray = [];
 var collectiblesArray = [];
-var lives = 5;
-var collectibles = 0;
+var lives = 3;
+var score = 0;
 
-var myX = [];
-for (let i = 1; i < 4; i++) {
-    myX.push(squares.x);
-}
+$(document).ready(function(){
+    setup();  
 
-var myY = [];
-for (let i = 1; i < 4; i++) {
-    myY.push(squares.y);
-}
-
-var myW = [];
-for (let i = 1; i < 4; i++) {
-    myW.push(squares.w);
-}
-
-var myH = [];
-for (let i = 1; i < 4; i++) {
-    myH.push(squares.h);
-}
-
-var myColor = [];
-for (let i = 1; i < 4; i++) {
-    myColor.push(squares.color);
-}
-
-createSquares();
-
-drawSquare();
+    $(this).keypress(function(event){
+        getKey(event);
+        
+    });
+});
 
 
 
-function createSquares() {
-    mySquare = new Square(x, y, 10, 10, "blue");
-    square1 = new Square(myX, myY, myW, myH, myColor);
-    square2 = new Square(myX, myY, myW, myH, myColor);
-    square3 = new Square(myX, myY, myW, myH, myColor);
-    square4 = new Square(myX, myY, myW, myH, myColor);
-}
+function setup()
+{
+    canvas = document.getElementById("myCanvas");
+    ctx = canvas.getContext("2d");
 
+    square1 = new Square(x, y, 10, 10, "blue");
+    square2 = new Square(400, 400, 100, 100, "red");
+    $.getJSON("DATA/squares.json", function(data) {
+        for(var i = 0; i < data.squares.length; i++)
+        {
+            squareArray.push(new Square(data.squares[i].x,data.squares[i].y, data.squares[i].h, data.squares[i].w, data.squares[i].color));
+        }
+        drawSquare();
+    });
 
 
 function drawSquare() {
     ctx.clearRect(0, 0, 800, 600);
     ctx.fillStyle = "blue";
-    ctx.fillRect(x, y, 10, 10);
-    ctx.fillStyle = square1.color;
     ctx.fillRect(square1.x, square1.y, square1.w, square1.h);
     ctx.fillStyle = square2.color;
     ctx.fillRect(square2.x, square2.y, square2.w, square2.h);
-    ctx.fillStyle = square3.color;
-    ctx.fillRect(square3.x, square3.y, square3.w, square3.h);
-    ctx.fillStyle = square4.color;
-    ctx.fillRect(square4.x, square4.y, square4.w, square4.h);
+    for(var i = 0; i < squareArray.length; i++)
+    {
+        ctx.fillStyle = squareArray[i].color;
+        ctx.fillRect(squareArray[i].x, squareArray[i].y, squareArray[i].width, squareArray[i].height);
+    }
+
+    ctx.font = "20px Arial";
+    ctx.fillText("Lives: " + lives, 10, 50);   
 
 }
 
-//jQuery for keypress
-$(document).ready(function () {
-    $(this).keypress(function (event) {
-        getKey(event);
-    });
-});
 
 
 function getKey(event) {
 
-    var didCollide1 = hasCollided(square1, square2);
-    if (didCollide1) {
-        canvas.style.backgroundColor = "rgb(" + Math.floor(Math.random() * 255) + "," + Math.floor(Math.random() * 255) + "," + Math.floor(Math.random() * 255) + ")";
-        square1.setWidth(square1.theWidth - 1);
-        square1.setHeight(square1.theHeight - 1);
-        square2.setWidth(square2.theWidth + 1);
-        square2.setHeight(square2.theHeight + 1);
-
-    }
-
-    var didCollide2 = hasCollided(square1, square3);
-    if (didCollide2) {
-        canvas.style.backgroundColor = "rgb(" + Math.floor(Math.random() * 255) + "," + Math.floor(Math.random() * 255) + "," + Math.floor(Math.random() * 255) + ")";
-        square1.setWidth(square1.theWidth + 2);
-        square1.setHeight(square1.theHeight + 2);
-        square3.setWidth(square3.theWidth + 5);
-        square3.setHeight(square3.theHeight + 1);
-    }
-
-     var didCollide3 = hasCollided(square1, square4);
-     if (didCollide3) {
-         canvas.style.backgroundColor = "rgb(" + Math.floor(Math.random() * 255) + "," + Math.floor(Math.random() * 255) + "," + Math.floor(Math.random() * 255) + ")";
-         square1.setWidth(square1.theWidth + 5);
-         square1.setHeight(square1.theHeight + 5);
-         square4.setWidth(square4.theWidth + 1);
-        square4.setHeight(square4.theHeight + 10);
-     }
- 
-    
     var char = event.which || event.keyCode;
     var actualLetter = String.fromCharCode(char);
     if (actualLetter == "w" && y + square1.height > 0) {
@@ -119,6 +70,45 @@ function getKey(event) {
     }
 
     drawSquare();
+
+    var test = hasCollided(square1,square2);
+    var test2 = false;
+    for(var i = 0; i < squareArray.length; i++)
+    {
+
+        test2 = hasCollided(square1,squareArray[i]);
+        if(test2 == true)
+        {
+            break;
+        }
+        
+        //console.log(test2);
+    }
+    if(test || test2)
+    {
+        lives--;
+        if(direction == "left")
+        {
+            moveRight();
+        }
+        else if(direction == "right")
+        {
+            moveLeft();
+        }
+        else if(direction == "up")
+        {
+            moveDown();
+        }
+        else if(direction == "down")
+        {
+            moveUp();
+        }
+    
+    }
+
+    drawSquare(); 
+    
+}
 
     var hitBoundary = boundaryCollide1(square1);
     if (hitBoundary) {
