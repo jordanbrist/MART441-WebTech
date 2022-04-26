@@ -96,6 +96,7 @@ function loadModel() {
     modelObject.position.set(50, -400, 0);
     scene.add(object);
     animateModel();
+    createBox5();
     createBox();
     createBox2();
     createBox3();
@@ -108,6 +109,35 @@ function animateModel() {
   modelObject.rotation.z -= 0.01;
   
 }
+
+
+// create the fifth box
+function createBox5() {
+    // create a box
+    var geometry = new THREE.BoxGeometry();
+    var material = new THREE.MeshBasicMaterial({
+      color: 0x12ae54
+    });
+    cube5 = new THREE.Mesh(geometry, material);
+    cube5.position.set(0, 30, -30);
+    scene.add(cube5);
+    cube5.scale.x = 1; // SCALE
+    cube5.scale.y = 1; // SCALE
+    cube5.scale.z = 1; // SCALE
+    cube5.parent = modelObject;
+  
+  
+    animate5();
+  }
+  
+  // animate the fifth box
+  function animate5() {
+    requestAnimationFrame(animate5);
+
+    cube5.rotation.x += 0.01;
+    renderer.render(scene, camera);
+  
+  }
 
 
 // create the first box
@@ -123,7 +153,7 @@ function createBox() {
     cube.scale.x = 20; // SCALE
     cube.scale.y = 20; // SCALE
     cube.scale.z = 20; // SCALE
-    cube.parent = modelObject;
+    cube.parent = cube5;
   
   
     animate();
@@ -152,7 +182,7 @@ function createBox2() {
     cube2.scale.x = 20; // SCALE
     cube2.scale.y = 20; // SCALE
     cube2.scale.z = 20; // SCALE
-    cube2.parent = modelObject;
+    cube2.parent = cube5;
   
   
     animate2();
@@ -181,7 +211,7 @@ function createBox3() {
     cube3.scale.x = 20; // SCALE
     cube3.scale.y = 20; // SCALE
     cube3.scale.z = 20; // SCALE
-    cube3.parent = modelObject;
+    cube3.parent = cube5;
   
   
     animate3();
@@ -210,7 +240,7 @@ function createBox4() {
     cube4.scale.x = 20; // SCALE
     cube4.scale.y = 20; // SCALE
     cube4.scale.z = 20; // SCALE
-    cube4.parent = modelObject;
+    cube4.parent = cube5;
   
   
     animate4();
