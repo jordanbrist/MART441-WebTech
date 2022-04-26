@@ -119,7 +119,7 @@ function createBox5() {
       color: 0x12ae54
     });
     cube5 = new THREE.Mesh(geometry, material);
-    cube5.position.set(0, 30, -30);
+    cube5.position.set(0, 0, 0);
     scene.add(cube5);
     cube5.scale.x = 1; // SCALE
     cube5.scale.y = 1; // SCALE
@@ -148,7 +148,7 @@ function createBox() {
       color: 0x12ae54
     });
     cube = new THREE.Mesh(geometry, material);
-    cube.position.set(0, -50, -50);
+    cube.position.set(0, -200, 50);
     scene.add(cube);
     cube.scale.x = 20; // SCALE
     cube.scale.y = 20; // SCALE
@@ -177,7 +177,7 @@ function createBox2() {
       color: 0xee260e
     });
     cube2 = new THREE.Mesh(geometry, material);
-    cube2.position.set(0, 200, -50);
+    cube2.position.set(0, 200, 50);
     scene.add(cube2);
     cube2.scale.x = 20; // SCALE
     cube2.scale.y = 20; // SCALE
@@ -206,7 +206,7 @@ function createBox3() {
       color: 0xeee00e
     });
     cube3 = new THREE.Mesh(geometry, material);
-    cube3.position.set(0, 80, -170);
+    cube3.position.set(0, 50, 200);
     scene.add(cube3);
     cube3.scale.x = 20; // SCALE
     cube3.scale.y = 20; // SCALE
@@ -235,7 +235,7 @@ function createBox4() {
       color: 0x120eee
     });
     cube4 = new THREE.Mesh(geometry, material);
-    cube4.position.set(0, 80, 100);
+    cube4.position.set(0, -50, -200);
     scene.add(cube4);
     cube4.scale.x = 20; // SCALE
     cube4.scale.y = 20; // SCALE
