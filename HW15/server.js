@@ -2,7 +2,7 @@ var http = require('http');
 var fs = require('fs');
 var url = require('url');
 const parse = require('node-html-parser').parse;
-var nameAndAge = "";
+var fullName = "";
 
 // Create a server
 http.createServer(function (request, response) {
@@ -15,8 +15,7 @@ http.createServer(function (request, response) {
    console.log("Request for " + pathname + " received.");
 
    // check to see if we are on the second page or not
-   if(pathname == "/index2.html")
-   {
+   if (pathname == "/index2.html") {
       readQueryString(queryObject);
    }
    // Read the requested file content from file system
@@ -49,38 +48,37 @@ console.log("Listening on Port 8081");
 
 // this function grabs all the data from the queryString
 function readQueryString(queryObject) {
-  
+
    // access all the queryString variables
    if (queryObject != null) {
-      let fName = queryObject.inputFirstName;
-      let lName = queryObject.inputLastName;
+      let fName = queryObject.firstName;
+      let lName = queryObject.lastName;
       let age = queryObject.inputAge;
       if (fName != undefined && lName != undefined && age != undefined) {
-         nameAndAge = fName + " " + lName + age;
+         fullName = "Hi " + fName + " " + lName + ", you are " + age + " years old.";
          // change the file
-         updateFile(nameAndAge);
+         updateFile(fullName);
       }
-     
+
    }
 }
 
 // this function updates the html file
-function updateFile(nameAndAge)
-{
-    // open the html file
-   fs.readFile('index2.html', 'utf8', (err,html)=>{
-      if(err){
+function updateFile(fullName) {
+   // open the html file
+   fs.readFile('index2.html', 'utf8', (err, html) => {
+      if (err) {
          throw err;
       }
-   
+
       // read through the DOM to change it
       let root = parse(html);
       // find the span tag in the file
       let mySpan = root.querySelector('span');
-     
+
       // change the content of 
-      mySpan.set_content(nameAndAge);
-      
+      mySpan.set_content(fullName);
+
       // create the stream
       var writerStream = fs.createWriteStream("index2.html");
       // Write the data to stream with encoding to be utf8
@@ -94,7 +92,7 @@ function updateFile(nameAndAge)
 
       writerStream.on('error', function (err) {
          console.log(err.stack);
-      });   
-    });
- 
+      });
+   });
+
 }
