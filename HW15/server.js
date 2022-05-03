@@ -80,7 +80,7 @@ function updateFile(fullName) {
       mySpan.set_content(fullName);
 
       // create the stream
-      var writerStream = fs.createWriteStream("index2.html");
+      var writerStream = fs.createWriteStream("index2.html" + "output.txt");
       // Write the data to stream with encoding to be utf8
       writerStream.write(root.toString(), 'UTF8');
       // Mark the end of file
@@ -89,7 +89,6 @@ function updateFile(fullName) {
       writerStream.on('finish', function () {
          console.log("Write completed.");
       });
-
       writerStream.on('error', function (err) {
          console.log(err.stack);
       });
