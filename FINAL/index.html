@@ -37,7 +37,7 @@ var paddle;
 var gBricks;
 var yBricks;
 var rBricks;
-
+var floor;
 var cursors;
 var left;
 var right;
@@ -55,13 +55,20 @@ function preload ()
     this.load.image('greenBrick', 'assets/green.png');
     this.load.image('yellowBrick', 'assets/yellow.png');
     this.load.image('redBrick', 'assets/red.png');
+    this.load.image('floor', 'assets/bluebar.png')
 
 }
 
 function create ()
 {
+    
+
     //  A simple background for our game
     this.add.image(400, 300, 'space');
+
+    //floor
+    floor = this.add.image(400, 601, 'floor')
+    floor.displayWidth = 800;
 
     //creates the ball
     ball = this.physics.add.sprite(400, 565, 'ball');
@@ -88,7 +95,7 @@ function create ()
             y: 110,
             stepX: 70
         },
-        bounce: 4
+        immovable: true
 
       });
 
@@ -100,7 +107,8 @@ function create ()
             x: 50,
             y: 75,
             stepX: 70
-        }
+        },
+        immovable: true
     
     });
 
@@ -112,18 +120,21 @@ function create ()
             x: 50,
             y: 40,
             stepX: 70
-        }
+        },
+        immovable: true
     
     });
     
 
     //colliders
     this.physics.add.collider(ball, paddle);
+  
     this.physics.add.collider(ball, gBricks);
     this.physics.add.collider(ball, yBricks);
     this.physics.add.collider(ball, rBricks);
 
-    this.physics.add.collider(ball, gBricks, hitBricksGreen, null, this);
+    this.physics.add.collider(ball, floor, hitFloor, null, true);
+
 
 
     //input from keyboard
@@ -132,7 +143,7 @@ function create ()
     //  The score
     scoreText = this.add.text(5, 5, 'score: 0', { fontSize: '20px', fill: 'white' });
 
-    
+
 
 }
 
@@ -140,6 +151,7 @@ function update ()
 {
     if (gameOver)
     {
+        alert('Game Over');
         return;
     }
 
@@ -157,32 +169,42 @@ function update ()
 
     }
 
-    function hitBricksGreen (ball, gBricks)
+    function hitGreen (ball, gBricks)
 {
-    gBricks.disableBody(true, true);
+    gBricks.disableBody(true, true),
 
     //  Add and update the score
-    score += 5;
+    score += 5,
     scoreText.setText('Score: ' + score);
 }
 
-  function hitBricksYellow (ball, yBricks)
+  function hitYellow (ball, yBricks)
 {
-    yBricks.disableBody(true, true);
+    yBricks.disableBody(true, true),
 
     //  Add and update the score
-    score += 10;
+    score += 10,
     scoreText.setText('Score: ' + score);
 }
 
-    function hitBricksRed (ball, rBricks)
+    function hitRed (ball, rBricks)
 {
-    rBricks.disableBody(true, true);
+    rBricks.disableBody(true, true),
 
     //  Add and update the score
-    score += 15;
+    score += 15,
     scoreText.setText('Score: ' + score);
 }
+
+function hitFloor (ball, floor)
+{
+    if (penalty <=3){
+    penalty += 1;
+    }
+
+    else (gameOver);
+}
+    
 
 
 }
