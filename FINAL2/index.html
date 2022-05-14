@@ -1,0 +1,193 @@
+<!doctype html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8" />
+    <title>FINAL</title>
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.11.0/dist/phaser.js"></script>
+    <style type="text/css">
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+<script type="text/javascript">
+
+var config = {
+    type: Phaser.AUTO,
+    width: 800,
+    height: 600,
+    physics: {
+        default: 'arcade',
+        arcade: {
+            gravity: { y: 0 },
+            debug: false
+        }
+    },
+    scene: {
+        preload: preload,
+        create: create,
+        update: update
+    }
+};
+
+var ball;
+var paddle;
+var gBricks;
+var yBricks;
+var rBricks;
+
+var cursors;
+var left;
+var right;
+var score = 0;
+var gameOver = false;
+var scoreText;
+
+var game = new Phaser.Game(config);
+
+function preload ()
+{
+    this.load.image('space', 'assets/gradient25.png');
+    this.load.image('ball', 'assets/vectorball1.png');
+    this.load.image('paddle', 'assets/grey.png');
+    this.load.image('greenBrick', 'assets/green.png');
+    this.load.image('yellowBrick', 'assets/yellow.png');
+    this.load.image('redBrick', 'assets/red.png');
+
+}
+
+function create ()
+{
+    //  A simple background for our game
+    this.add.image(400, 300, 'space');
+
+    //creates the ball
+    ball = this.physics.add.sprite(400, 565, 'ball');
+    ball.setOrigin(0.5);
+    ball.setBounce(1.05);
+    ball.setCollideWorldBounds(true);
+    ball.setVelocity(200, -200);
+
+   //creates the paddle
+    paddle = this.physics.add.sprite(400, 590, 'paddle');
+    paddle.displayWidth = 100;
+    paddle.displayHeight = 10;
+    paddle.setCollideWorldBounds(true);
+    paddle.body.immovable = true;
+    paddle.setOrigin(0.5, 1);
+
+    //Brick sprite Groups
+
+    gBricks = this.physics.add.group({
+        key: 'greenBrick',
+        repeat: 10,
+        setXY: {
+            x: 50,
+            y: 110,
+            stepX: 70
+        },
+        bounce: 4
+
+      });
+
+
+    yBricks = this.physics.add.group({
+        key: 'yellowBrick',
+        repeat: 10,
+        setXY: {
+            x: 50,
+            y: 75,
+            stepX: 70
+        }
+    
+    });
+
+
+    rBricks = this.physics.add.group({
+        key: 'redBrick',
+        repeat: 10,
+        setXY: {
+            x: 50,
+            y: 40,
+            stepX: 70
+        }
+    
+    });
+    
+
+    //colliders
+    this.physics.add.collider(ball, paddle);
+    this.physics.add.collider(ball, gBricks);
+    this.physics.add.collider(ball, yBricks);
+    this.physics.add.collider(ball, rBricks);
+
+    this.physics.add.collider(ball, gBricks, hitBricksGreen, null, this);
+
+
+    //input from keyboard
+    cursors = this.input.keyboard.createCursorKeys();
+
+    //  The score
+    scoreText = this.add.text(5, 5, 'score: 0', { fontSize: '20px', fill: 'white' });
+
+    
+
+}
+
+function update ()
+{
+    if (gameOver)
+    {
+        return;
+    }
+
+    if (cursors.left.isDown)
+    {
+        paddle.setVelocityX(-500);
+    }
+    else if (cursors.right.isDown)
+    {
+        paddle.setVelocityX(500);
+    }
+    else
+    {
+        paddle.setVelocityX(0);
+
+    }
+
+    function hitBricksGreen (ball, gBricks)
+{
+    gBricks.disableBody(true, true);
+
+    //  Add and update the score
+    score += 5;
+    scoreText.setText('Score: ' + score);
+}
+
+  function hitBricksYellow (ball, yBricks)
+{
+    yBricks.disableBody(true, true);
+
+    //  Add and update the score
+    score += 10;
+    scoreText.setText('Score: ' + score);
+}
+
+    function hitBricksRed (ball, rBricks)
+{
+    rBricks.disableBody(true, true);
+
+    //  Add and update the score
+    score += 15;
+    scoreText.setText('Score: ' + score);
+}
+
+
+}
+
+</script>
+
+</body>
+</html>
