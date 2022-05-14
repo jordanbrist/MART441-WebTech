@@ -4,10 +4,7 @@
     <meta charset="UTF-8" />
     <title>FINAL</title>
     <script src="https://cdn.jsdelivr.net/npm/phaser@3.11.0/dist/phaser.js"></script>
-    <style type="text/css">
-        body {
-            margin: 0;
-        }
+    <link rel="stylesheet" type="text/css" href="./style.css">
     </style>
 </head>
 <body>
@@ -37,13 +34,14 @@ var paddle;
 var gBricks;
 var yBricks;
 var rBricks;
-var floor;
 var cursors;
 var left;
 var right;
 var score = 0;
+var hits = 0;
 var gameOver = false;
 var scoreText;
+var lifeText;
 
 var game = new Phaser.Game(config);
 
@@ -55,7 +53,6 @@ function preload ()
     this.load.image('greenBrick', 'assets/green.png');
     this.load.image('yellowBrick', 'assets/yellow.png');
     this.load.image('redBrick', 'assets/red.png');
-    this.load.image('floor', 'assets/bluebar.png')
 
 }
 
@@ -66,16 +63,13 @@ function create ()
     //  A simple background for our game
     this.add.image(400, 300, 'space');
 
-    //floor
-    floor = this.add.image(400, 601, 'floor')
-    floor.displayWidth = 800;
-
     //creates the ball
     ball = this.physics.add.sprite(400, 565, 'ball');
     ball.setOrigin(0.5);
-    ball.setBounce(1.05);
+    ball.setBounce(1);
     ball.setCollideWorldBounds(true);
     ball.setVelocity(200, -200);
+    
 
    //creates the paddle
     paddle = this.physics.add.sprite(400, 590, 'paddle');
@@ -127,21 +121,26 @@ function create ()
     
 
     //colliders
+    
     this.physics.add.collider(ball, paddle);
-  
-    this.physics.add.collider(ball, gBricks);
-    this.physics.add.collider(ball, yBricks);
-    this.physics.add.collider(ball, rBricks);
+    this.physics.add.collider(ball, gBricks, hitGreen, null, this);
+    this.physics.add.collider(ball, yBricks, hitYellow, null, this);
+    this.physics.add.collider(ball, rBricks, hitRed, null, this);
 
-    this.physics.add.collider(ball, floor, hitFloor, null, true);
 
+
+    
 
 
     //input from keyboard
     cursors = this.input.keyboard.createCursorKeys();
 
     //  The score
-    scoreText = this.add.text(5, 5, 'score: 0', { fontSize: '20px', fill: 'white' });
+    scoreText = this.add.text(20, 5, 'score: 0', { fontSize: '20px', fill: 'white' });
+
+    //lives
+
+    lifeText = this.add.text(680, 5, 'lives: 3', { fontSize: '20px', fill: 'white' });
 
 
 
@@ -155,19 +154,44 @@ function update ()
         return;
     }
 
+    if (ball.y >= paddle.y)
+    {
+        hits += 1;
+
+        lifeText.setText('Lives: ' + (3 - hits));
+        
+        ball.setPosition(400, 565);
+        
+        paddle.setPosition(400, 590);
+    }
+
+    if (hits == 3)
+    {
+        gameOver = true;
+    }
+
+    if (score == 300)
+    {
+
+        alert('You Win!');
+        return;
+        
+    }
+
     if (cursors.left.isDown)
     {
-        paddle.setVelocityX(-500);
+        paddle.setVelocityX(-525);
     }
     else if (cursors.right.isDown)
     {
-        paddle.setVelocityX(500);
+        paddle.setVelocityX(525);
     }
     else
     {
         paddle.setVelocityX(0);
 
     }
+}
 
     function hitGreen (ball, gBricks)
 {
@@ -196,20 +220,13 @@ function update ()
     scoreText.setText('Score: ' + score);
 }
 
-function hitFloor (ball, floor)
-{
-    if (penalty <=3){
-    penalty += 1;
-    }
-
-    else (gameOver);
-}
-    
-
-
-}
-
 </script>
+
+
+<audio controls autoplay loop="true">
+    <source src="./audio/music.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+</audio>
 
 </body>
 </html>

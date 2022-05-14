@@ -1,0 +1,17 @@
+body{
+    font-family: 'Arial', 'Sans Serif';
+    background-color: black;
+    color:rgb(0, 0, 0);
+    
+}
+
+canvas{
+    display : block;   
+    margin : auto;
+    }
+
+audio{
+    display : block;   
+    margin : auto;
+    padding: 20px;
+}
